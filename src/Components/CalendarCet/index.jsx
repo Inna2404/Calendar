@@ -6,16 +6,16 @@ const GridWrap = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 1px;
   // padding-right: 9px;
-  background-color: ${(props) => (props.isHeader ? "#1e1f21" : "#404040")};
-  ${(props) => props.isHeader && "border-bottom :1px solid #404040"}
+  background-color: ${(props) => (props.isheader ? "#1e1f21" : "#404040")};
+  ${(props) => props.isheader && "border-bottom :1px solid #404040"}
 `;
 
 const RowCell = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${(props) =>
-    props.justifyContent ? props.justifyContent : "flex-start"};
-  padding-right: ${(props) => `${props.padR || 0}px`};
+    props.justifycontent ? props.justifycontent : "flex-start"};
+  padding-right: ${(props) => `${props.padr || 0}px`};
 `;
 const DayWrap = styled.div`
   height: 35px;
@@ -29,8 +29,9 @@ const DayWrap = styled.div`
 
 const CellWrap = styled.div`
   min-width: 140px;
-  min-height: ${(props) => (props.isHeader ? 24 : 80)}px;
-  background-color: ${(props) => (props.weekendDay ? "#272829" : "#1e1f21")};
+  min-height: ${(props) => (props.isheader ? 24 : 80)}px;
+  background-color: ${(props) =>
+    props["weekendday"] === "true" ? "#272829" : "#1e1f21"};
   color: ${(props) => (props.selectedMonth ? "#dddcdd" : "#555754")};
 `;
 
@@ -92,10 +93,10 @@ const CalendarCet = ({ currentDate, events, openForm }) => {
 
   return (
     <>
-      <GridWrap isHeader>
+      <GridWrap isheader>
         {[...Array(7)].map((_, index) => (
-          <CellWrap isHeader key={index} selectedMonth>
-            <RowCell justifyContent={"flex-end"} padR={8}>
+          <CellWrap isheader key={index} selectedMonth>
+            <RowCell justifycontent={"flex-end"} padr={8}>
               {daysCet[index].toLocaleDateString("en-US", { weekday: "short" })}
             </RowCell>
           </CellWrap>
@@ -105,7 +106,9 @@ const CalendarCet = ({ currentDate, events, openForm }) => {
       <GridWrap>
         {daysCet.map((dayItem) => (
           <CellWrap
-            weekendDay={dayItem.getDay() === 6 || dayItem.getDay() === 0}
+            weekendday={(
+              dayItem.getDay() === 6 || dayItem.getDay() === 0
+            ).toString()}
             key={dayItem.toISOString()}
             selectedMonth={
               selectedMonth(dayItem) === selectedMonth(currentDate)
