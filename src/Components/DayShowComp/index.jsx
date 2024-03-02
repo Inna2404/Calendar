@@ -52,7 +52,7 @@ const EventFormWrapper = styled("div")`
   border-left: 1px solid #464648;
 `;
 const NoEventMsg = styled("div")`
-  colox: #565759;
+  color: #565759;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -62,6 +62,10 @@ const NoEventMsg = styled("div")`
 const TitleText = styled("div")`
   padding-top: 12px;
   text-align: center;
+`;
+const WrappButtonList = styled("div")`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const DayShowComp = ({
@@ -158,13 +162,13 @@ const DayShowComp = ({
           </div>
         ) : (
           <>
-            <div>
+            <WrappButtonList>
               <button
                 onClick={() => openFormHandler("Create", null, currentDate)}
               >
                 Create new to do list
               </button>
-            </div>
+            </WrappButtonList>
             <NoEventMsg>No list selected</NoEventMsg>
           </>
         )}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import CalendarCet from "./Components/CalendarCet";
 import styled from "styled-components";
-import CalendarDate from "./Components/CalendarDate";
+import CalendarDate from "./Components/CalendarDateModal";
 import DayShowComp from "./Components/DayShowComp";
 import { ButtonWrap } from "./Container/StyledComponents";
 import { FetcHandler } from "./Components/FetchHandler";
@@ -53,9 +53,11 @@ const EventListWrap = styled("ul")`
 
 const EventItemWrap = styled("button")`
   position: relative;
-  text-overflow: ellipsis;
   // overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  width: 113px;
+  text-align: left;
   border: unset;
   background: unset;
   color: #dddd;
