@@ -7,12 +7,10 @@ export default function SizeCheckbox() {
   const handleCheck = () => {
     const newChecked = !checked;
     setChecked(newChecked);
-    // Зберігаємо значення чекбокса в локальне сховище
     localStorage.setItem("checkbox", JSON.stringify(newChecked));
   };
 
   useEffect(() => {
-    // витягуємо значення  з локального сховища
     const storedValue = localStorage.getItem("checkbox");
     if (storedValue !== null) {
       setChecked(JSON.parse(storedValue));

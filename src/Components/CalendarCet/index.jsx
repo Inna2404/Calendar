@@ -75,8 +75,7 @@ const CalendarCet = ({ currentDate, events, openForm }) => {
 
   const firstDayOfMonth = new Date(
     currentDate.getFullYear(),
-    currentDate.getMonth(),
-    1
+    currentDate.getMonth()
   );
 
   const startDayOfWeek = firstDayOfMonth.getDay();
